@@ -9,7 +9,7 @@ export default class EndpointBalance extends BackendEndpoint {
     }
 
     public override endpoint_callback(request: Request, response: Response, database: BackendDatabase): void {
-        response.json(database.transaction_balance());
+        response.status(200).json(database.transaction_balance());
     }
 
 }
