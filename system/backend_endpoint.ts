@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import SystemLog from "../utilities/system_log";
+import { BackendDatabase } from "./backend_database";
 
 export default class BackendEndpoint {
 
@@ -11,7 +12,7 @@ export default class BackendEndpoint {
         this.endpoint_path = endpoint_path;
     }
 
-    public endpoint_callback(request: Request, response: Response): void {
+    public endpoint_callback(request: Request, response: Response, database: BackendDatabase): void {
         SystemLog.log_send(`Callback executed for endpoint \"${BackendEndpointType[this.endpoint_type]} ${this.endpoint_path}\"`);
     }
 

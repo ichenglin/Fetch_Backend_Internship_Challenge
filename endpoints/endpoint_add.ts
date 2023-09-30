@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import BackendEndpoint, { BackendEndpointType } from "../system/backend_endpoint";
+import { BackendDatabase, DatabaseTransaction } from "../system/backend_database";
 
 export default class EndpointAdd extends BackendEndpoint {
 
@@ -7,9 +8,12 @@ export default class EndpointAdd extends BackendEndpoint {
         super(BackendEndpointType.POST, "/add");
     }
 
-    public override endpoint_callback(request: Request, response: Response): void {
-        console.log(request.body);
-        console.log(new Date(request.body.timestamp).toLocaleString());
+    public override endpoint_callback(request: Request, response: Response, database: BackendDatabase): void {
+        database.transaction_add({
+            payer:     request.body.payer,
+            points:    request.body.points,
+            timestamp: new Date(request.body.timestamp),
+        } as DatabaseTransaction);
     }
 
 }
