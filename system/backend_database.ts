@@ -9,13 +9,15 @@ export class BackendDatabase {
     }
 
     public transaction_add(transaction: DatabaseTransaction): void {
+        // record the name of payer if not present
         if (!this.database_payers.includes(transaction.payer)) this.database_payers.push(transaction.payer);
+        // don't need to do binary search if there's no transactions saved
         if (this.database_transactions.length <= 0) {
             this.database_transactions.push(transaction);
             return;
         }
+        // perform binary search for finding where the new transaction should be inserted
         const transaction_time = transaction.timestamp.getTime(); 
-        // insert with binary search
         let range_upper = (this.database_transactions.length - 1);
         let range_lower = 0;
         while (range_upper > range_lower) {
@@ -24,6 +26,7 @@ export class BackendDatabase {
             if (center_time <= transaction_time) range_lower = center_index + 1;
             else                                 range_upper = center_index;
         }
+        // insert the transaction into the queue
         const transaction_index = range_upper + 1;
         this.database_transactions = [
             ...this.database_transactions.slice(0, transaction_index),
@@ -60,6 +63,7 @@ export class BackendDatabase {
     }
 
     public transaction_balance(): {} {
+        // construct balance report with record of payer names and active transactions
         const balance = Object.fromEntries(this.database_payers.map(loop_payer => [loop_payer, 0]));
         for (const transaction of this.database_transactions) balance[transaction.payer] += transaction.points; 
         return balance;

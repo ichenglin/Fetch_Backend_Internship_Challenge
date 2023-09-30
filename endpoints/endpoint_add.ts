@@ -9,6 +9,7 @@ export default class EndpointAdd extends BackendEndpoint {
     }
 
     public override endpoint_callback(request: Request, response: Response, database: BackendDatabase): void {
+        // request body validation
         const request_validation = typeof request.body           === "object" &&
                                    typeof request.body.payer     === "string" &&
                                    typeof request.body.points    === "number" &&
@@ -18,6 +19,7 @@ export default class EndpointAdd extends BackendEndpoint {
             response.status(400).json({error: "Invalid request body"});
             return;
         }
+        // process the transaction and return status
         database.transaction_add({
             payer:     request.body.payer,
             points:    request.body.points,

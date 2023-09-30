@@ -7,10 +7,11 @@ import EndpointBalance from "./endpoints/endpoint_balance";
 
 dotenv.config();
 
+// register endpoints
 const server_endpoints = [
-    new EndpointAdd(),
-    new EndpointSpend(),
-    new EndpointBalance()
+    new EndpointAdd(),    // POST /add
+    new EndpointSpend(),  // POST /spend
+    new EndpointBalance() // GET  /balance
 ];
 
 const server_port        = parseInt(process.env.SERVER_PORT as string);

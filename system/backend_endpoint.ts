@@ -13,6 +13,7 @@ export default class BackendEndpoint {
     }
 
     public endpoint_callback(request: Request, response: Response, database: BackendDatabase): void {
+        // default callback function, should be overrided
         SystemLog.log_send(`Callback executed for endpoint \"${BackendEndpointType[this.endpoint_type]} ${this.endpoint_path}\"`);
     }
 
@@ -26,6 +27,8 @@ export default class BackendEndpoint {
 
 }
 
+// there's more than just GET and POST in REST
+// but these are all we need in this coding challenge
 export enum BackendEndpointType {
     GET,
     POST
