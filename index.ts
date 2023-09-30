@@ -1,19 +1,11 @@
 import dotenv from "dotenv";
-import express from "express";
-import SystemLog from "./utilities/system_log";
+import { BackendApplication } from "./system/backend_application";
+import EndpointAdd from "./endpoints/endpoint_add";
 
-// initialize dotenv
 dotenv.config();
-// initialize express
-const express_application = express();
-express_application.use(express.json());
-express_application.set("json spaces", "\t");
 
-express_application.get("/", (request, response) => {
-    response.json({hello: "world"});
-});
+const server_endpoints = [
+    new EndpointAdd()
+];
 
-// establish connection
-express_application.listen(process.env.EXPRESS_PORT, () => {
-    SystemLog.log_send(`Server running on port ${process.env.EXPRESS_PORT}`)
-});
+export const server_application = new BackendApplication(parseInt(process.env.SERVER_PORT as string), server_endpoints);
