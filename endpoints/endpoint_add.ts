@@ -14,6 +14,7 @@ export default class EndpointAdd extends BackendEndpoint {
             points:    request.body.points,
             timestamp: new Date(request.body.timestamp),
         } as DatabaseTransaction);
+        response.json({success: true});
     }
 
 }

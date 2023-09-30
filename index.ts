@@ -3,12 +3,14 @@ import { BackendApplication } from "./system/backend_application";
 import EndpointAdd from "./endpoints/endpoint_add";
 import { BackendDatabase } from "./system/backend_database";
 import EndpointSpend from "./endpoints/endpoint_spend";
+import EndpointBalance from "./endpoints/endpoint_balance";
 
 dotenv.config();
 
 const server_endpoints = [
     new EndpointAdd(),
-    new EndpointSpend()
+    new EndpointSpend(),
+    new EndpointBalance()
 ];
 
 const server_port        = parseInt(process.env.SERVER_PORT as string);
