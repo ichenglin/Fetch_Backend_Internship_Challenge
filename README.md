@@ -27,10 +27,10 @@ Normally **[TypeScript](https://www.typescriptlang.org/)** projects require the 
 
 There's **two types** of command here, one with **only the full implementation** of the coding challenge (**`npm run start`**) and the other with **additional sample code** test (**`npm run sample`**).
 
-> | Command                 | Full Implementation | Sample Solution | Usage                                          |
-> | ----------------------- | :-----------------: | :-------------: | ---------------------------------------------- |
-> | **`npm run start`**     | ⭕                  | ❌             | Manually interact with the endpoints           |
-> | **`npm run sample`**    | ⭕                  | ⭕             | View how the program deal with sample solution |
+> | Command                 | Full Implementation | Sample Solution | Usage                                |
+> | ----------------------- | :-----------------: | :-------------: | ------------------------------------ |
+> | **`npm run start`**     | ⭕                  | ❌             | Manually interact with the endpoints |
+> | **`npm run sample`**    | ⭕                  | ⭕             | View output from sample solution     |
 
 More specifically, if you want to **test the functionality** of the program then execute the **first** command **`npm run start`**. On the other hand, if you would like to look at the **program output from sample solution**,
 run the **second** command **`npm run sample`**.
