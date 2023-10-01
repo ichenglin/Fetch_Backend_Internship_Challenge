@@ -50,3 +50,7 @@ in use or you simply want a **custom port** to be used by the program, you can e
 > ```env
 > SERVER_PORT: 8000
 > ```
+
+## Additional Resources
+
+Challenge Part 2: **[summary.txt file](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/blob/main/summary.txt)**
