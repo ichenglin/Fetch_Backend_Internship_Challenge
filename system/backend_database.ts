@@ -64,7 +64,7 @@ export class BackendDatabase {
                 points_remain -= transaction_deduct;
                 continue;
             }
-            // transaction have enough to cover the remaining points, compute the results after deducted points
+            // transaction have enough to cover the remaining points, remove transactions without points remaining from the ordered queue list
             this.database_transactions[transaction_index].points -= points_remain;
             this.database_transactions = this.database_transactions.slice(transaction_index + (points_remain === transaction_element.points ? 1 : 0));
             // returns the points deducted from each payer
