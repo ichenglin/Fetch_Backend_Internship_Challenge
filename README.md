@@ -1,7 +1,7 @@
 <div align="center">
 	<h1>Fetch Backend Internship Challenge</h1>
 	<p>Coding challenge for Fetch summer 2024 backend engineering internship application.</p>
-	<img src="https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/assets/41904540/256888b2-6b28-4b8e-9852-13e9dc377b96" alt="API Terminal Demo">
+	<img src="https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/assets/41904540/b56c09d9-ff54-4c85-9339-01a086f961de" alt="API Terminal Demo">
 </div>
 
 > This instruction file is **not supposed to be viewed as a text file**. If you **aren't** using an online or offline **Markdown viewer**,
@@ -28,6 +28,8 @@
 Normally **[TypeScript](https://www.typescriptlang.org/)** projects require the programmer to **manually compile** the **[TypeScript](https://www.typescriptlang.org/)** source code into 
 **[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)**; however, in this project we already have it set up to **automatically compile** using 
 **[npm-run-script](https://docs.npmjs.com/cli/v10/commands/npm-run-script)** as listed below.
+
+![fetch backend comparison](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/assets/41904540/0b461082-12cd-48a2-8dc0-c9ea59a78dfb)
 
 There's **two types** of command here, one with **only the full implementation** of the coding challenge (**`npm run start`**) and the other with **additional sample code** test (**`npm run sample`**).
 
