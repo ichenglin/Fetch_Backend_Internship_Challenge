@@ -1,0 +1,51 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+
+I decided to use Typescript–a superset of JavaScript–with Node.js runtime environment for this project
+as they have the best compatibility with the frontend, while also providing essential features such as
+Event-driven programming, Object-oriented programming, static typing, a rich ecosystem for up-to-date
+libraries and community solutions, etc. From a personal standpoint, I also found Typescript (more
+specifically Javascript) has the most flexible lambda statements out of all programming languages,
+which makes software development convenient and productive. In addition, I installed Express for handling
+the requests of REST API and Dotenv for importing the configuration environment variables into my source code.
+The separation of configuration environment variables prevents important credentials (such as database logins)
+from being published (for example Git if blacklisted in .gitignore) and provides better configuration management.
+
+
+
+2. What are the advantages and disadvantages of your solution?
+
+In my solution, I focused on optimizing my program’s runtime performance and ensuring its future maintainability.
+Most of my decisions created advantages for the program, but a few of them also had disadvantages.
+
+In terms of performance, I implemented the Binary Insertion Sort algorithm with a time complexity of O(log n) for
+inserting transactions into an ordered queue list based on their given timestamp. This method enables the spending
+points process to prioritize older transactions while having a time complexity of O(1), by directly accessing from
+the front of the ordered queue list. Despite the optimization of time complexity, my approach also guarantees the
+Binary Insertion Sort–that consumes the most resources–to only be executed once per transaction by having it during
+the add process, whereas an implementation in spending points could be executed more than once per transaction if
+the transaction has more points than the current spending amount.
+
+Furthermore, the high maintainability of my program came from the Object-oriented programming practice,
+where each class object is a breakdown of the solution and could function on its own for debugging purposes,
+or be combined together to form the complete program. For example, I introduced objects that represent the endpoints
+of my REST API (in the index.ts source file located at the root of the program folder). The dynamic design has the
+advantage of being able to manage the active endpoints or add additional endpoints more conveniently, but it also
+has the disadvantage of the tradeoff in runtime reliability. The endpoint class was designed to be compatible with
+all types of requests (such as GET and POST), which lost the ability to catch some of the errors during compilation
+and ended up occurring in runtime.
+
+
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+
+My favorite personal project would be Sladden, a first-person shooter game I made from October 2019 to November 2020.
+The motivation to create my own game comes from my interest in playing video games, and it’s also why I decided to study
+computer science in college. I found it interesting to recall the game’s evolutions over the months, where it became
+more and more detailed and playable as I learned on my own. The few challenges I faced during the development included
+calculating the projectile trajectory for grenades, transforming matrices for the initial yaw and pitch of projectiles,
+and optimizing the performance of player hitbox detection. I ended up self-taught myself physics and math through research
+online and inventing my own ray tracing methods to get the problems solved. What’s surprising is that I found myself
+interested in physics and math after understanding their applications, so later I signed up for Mechanics (physics),
+Electricity and Magnetism (physics), and Linear Algebra (math) in high school just to know more about them. The reason
+it’s my favorite project is not just because I enjoy making games, but also cause I learned why we need physics and
+math–which I used to find boring before this project.

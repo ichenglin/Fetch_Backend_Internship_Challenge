@@ -23,7 +23,10 @@ export default class EndpointSpend extends BackendEndpoint {
         }
         // retrieve result from database, report on failure
         const payers_involved = database.transaction_spend(request.body.points);
-        if (payers_involved.length <= 0) response.status(400).json({error: "User have insufficient points"});
+        if (payers_involved.length <= 0) {
+            response.status(400).json({error: "User have insufficient points"});
+            return;
+        }
         response.status(200).json(payers_involved);
     }
 
