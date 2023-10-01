@@ -13,7 +13,8 @@
    A device with **[Git](https://github.com/git-guides/install-git)** installed will return the **last installed version**; if the message doesn't appear, please follow the
    **[guide from Github](https://github.com/git-guides/install-git)** to install **[Git](https://github.com/git-guides/install-git)**.
 3. Open a **terminal** and **navigate to the folder** you want **[this repository](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge)** to be cloned in using **`cd <path>`**, then execute the command
-   **`git clone https://github.com/ichenglin/Fetch_Backend_Internship_Challenge.git`** to **clone** the repository.
+   **`git clone https://github.com/ichenglin/Fetch_Backend_Internship_Challenge.git`** to **clone** the repository. Afterwards, execute **`cd Fetch_Backend_Internship_Challenge` (IMPORTANT)** to enter the cloned repository
+   *(entering the repository in terminal is important for later steps)*.
 5. Install the **required dependencies and development dependencies** by executing the command **`npm install`**, this command is from **[Node Package Manager](https://github.com/npm/cli)** and should comes
    **bundled** with **[Node.js](https://nodejs.org/en/download)** you installed earlier *(you **don't** have to manually install Node Package Manager, just execute the command directly)*.
 
