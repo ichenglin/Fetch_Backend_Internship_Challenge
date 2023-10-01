@@ -7,6 +7,9 @@ import EndpointBalance from "./endpoints/endpoint_balance";
 
 dotenv.config();
 
+/**
+ * The entry point of the program when "npm run start" is executed in terminal
+ */
 (async() => {
     // register endpoints
     const server_endpoints = [

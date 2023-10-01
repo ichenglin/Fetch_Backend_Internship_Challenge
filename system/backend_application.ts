@@ -6,6 +6,9 @@ import SystemLog from "../utilities/system_log";
 import BackendEndpoint, { BackendEndpointType } from "./backend_endpoint";
 import { BackendDatabase } from "./backend_database";
 
+/**
+ * The main handler of the REST API server, registers endpoints and launch the server.
+ */
 export class BackendApplication {
 
     private server_application: Express;
@@ -23,17 +26,18 @@ export class BackendApplication {
         this.server_load_endpoints();
     }
 
+    /**
+     * Enable json middleware with tab spacing.
+     */
     private server_load_configuration(): void {
-        // enable json middleware with tab spacing
         this.server_application.use(express.json());
         this.server_application.set("json spaces", "\t");
-        this.server_application.on("error", (error) => {if ((error as any).code === "EADDRINUSE") {
-            SystemLog.log_send(`Port ${this.server_port} is already in use!`);
-        }});
     }
 
+    /**
+     * Load the dynamic server endpoints.
+     */
     private server_load_endpoints(): void {
-        // load server endpoints
         for (const server_endpoint of this.server_endpoints) {
             const endpoint_method   = BackendEndpointType[server_endpoint.get_endpoint_type()];
             const endpoint_path     = server_endpoint.get_endpoint_path();
@@ -47,6 +51,11 @@ export class BackendApplication {
         }
     }
 
+    /**
+     * Launch the server on the port number specified during object construction.
+     * 
+     * @returns The status code of server connection, true if successfully launched and false otherwise.
+     */
     public async server_connect(): Promise<boolean> {
         // start the server on specified port
         return new Promise((resolve, reject) => {
@@ -63,6 +72,11 @@ export class BackendApplication {
         });
     }
 
+    /**
+     * Access the port number of the server.
+     * 
+     * @returns The port number of the server.
+     */
     public get_port(): number {
         return this.server_port;
     }

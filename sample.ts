@@ -11,6 +11,9 @@ import SystemLog from "./utilities/system_log";
 
 dotenv.config();
 
+/**
+ * The entry point of the program when "npm run sample" is executed in terminal
+ */
 (async() => {
     // register endpoints
     const server_endpoints = [

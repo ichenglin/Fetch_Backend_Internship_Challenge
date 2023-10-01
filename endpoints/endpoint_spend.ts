@@ -2,12 +2,23 @@ import { Request, Response } from "express";
 import BackendEndpoint, { BackendEndpointType } from "../system/backend_endpoint";
 import { BackendDatabase } from "../system/backend_database";
 
+/**
+ * The object that implements the dynamic "/spend" endpoint, passed to BackendApplication on construction
+ * to register the endpoint.
+ */
 export default class EndpointSpend extends BackendEndpoint {
 
     constructor() {
         super(BackendEndpointType.POST, "/spend");
     }
 
+    /**
+     * The callback function for the "/spend" endpoint, called when the endpoint is accessed.
+     * 
+     * @param request Request data that the server received, including request body if provided.
+     * @param response The handler for responding to client, including status code and json response.
+     * @param database The database for interacting with server data.
+     */
     public override endpoint_callback(request: Request, response: Response, database: BackendDatabase): void {
         // request body validation
         const request_validation = typeof request.body        === "object" &&

@@ -1,3 +1,6 @@
+/**
+ * The database handler of the REST API server, processes the transactions in the server.
+ */
 export class BackendDatabase {
 
     private database_transactions:  Array<DatabaseTransaction>;
@@ -8,6 +11,11 @@ export class BackendDatabase {
         this.database_payers        = new Array<string>();
     }
 
+    /**
+     * Insert the new transaction into an ordered queue list based on timestamp using Binary Insertion Sort.
+     * 
+     * @param transaction The new transaction to be inserted.
+     */
     public transaction_add(transaction: DatabaseTransaction): void {
         // record the name of payer if not present
         if (!this.database_payers.includes(transaction.payer)) this.database_payers.push(transaction.payer);
@@ -35,6 +43,13 @@ export class BackendDatabase {
         ];
     }
 
+    /**
+     * Spend points from the previous added transactions while prioritizing ones with an older timestamp,
+     * and returns the points deducted from each payer.
+     * 
+     * @param spend_points The points to spend.
+     * @returns The points deducted from each payer, empty if there's not enough points to spend.
+     */
     public transaction_spend(spend_points: number): {payer: string, points: number}[] {
         const payers_involved = new Map<string, number>();
         let points_remain     = spend_points;
@@ -62,6 +77,11 @@ export class BackendDatabase {
         return [];
     }
 
+    /**
+     * Access the list of payers and their remaining points.
+     * 
+     * @returns The list of payers and their remaining points.
+     */
     public transaction_balance(): {} {
         // construct balance report with record of payer names and active transactions
         const balance = Object.fromEntries(this.database_payers.map(loop_payer => [loop_payer, 0]));
@@ -71,6 +91,9 @@ export class BackendDatabase {
 
 }
 
+/**
+ * The interface that represents the transactions in this program.
+ */
 export interface DatabaseTransaction {
     payer:     string,
     points:    number,
