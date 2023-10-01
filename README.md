@@ -5,7 +5,7 @@
 </div>
 
 > This instruction file is **not supposed to be viewed as a text file**. If you **aren't** using an online or offline **Markdown viewer**,
-> please consider **reading** this through the **[Github repository](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/edit/main/README.md)**.
+> please consider **reading** this through the **[Github repository](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/tree/main)**.
 
 ## Installation
 
