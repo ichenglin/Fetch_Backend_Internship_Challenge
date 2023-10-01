@@ -4,6 +4,9 @@
 	<img src="https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/assets/41904540/256888b2-6b28-4b8e-9852-13e9dc377b96" alt="API Terminal Demo">
 </div>
 
+> This instruction file is **not supposed to be viewed as a text file**. If you **aren't** using an online or offline **Markdown viewer**,
+> please consider **reading** this through the **[Github repository](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/edit/main/README.md)**.
+
 ## Installation
 
 1. Please make sure you have **[Node.js](https://nodejs.org/en/download)** installed on **your device**, this can be **checked** by executing the command **`node -v`** in the **terminal**.
@@ -40,3 +43,8 @@ run the **second** command **`npm run sample`**.
 
 In this program, **[Dotenv](https://www.npmjs.com/package/dotenv)** is used to **seperate program credentials** *(such as database logins, which is not used in this program)* **from the source code**. If the port 8000 is already
 in use or you simply want a **custom port** to be used by the program, you can easily **set a new port** from editing the **[.env](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/blob/main/.env)** file in the root folder of the program.
+
+> **Example .env file** *(default on clone)*
+> ```env
+> SERVER_PORT: 8000
+> ```
