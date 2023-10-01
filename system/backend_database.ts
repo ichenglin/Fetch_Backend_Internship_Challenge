@@ -59,19 +59,16 @@ export class BackendDatabase {
             // record the amount of points deducted from each payer
             if (!payers_involved.has(transaction_element.payer)) payers_involved.set(transaction_element.payer, 0);
             payers_involved.set(transaction_element.payer, (payers_involved.get(transaction_element.payer) as number) + transaction_deduct);
-            // check if the transaction have enough to cover the remaining points
-            if (points_remain === transaction_element.points) {
-                // have just enough to cover the remaining points
-                this.database_transactions = this.database_transactions.slice(transaction_index + 1);
-                return Array.from(payers_involved, ([payer, points]) => ({payer: payer, points: ((-1) * points)}));
-            } else if (points_remain < transaction_element.points) {
-                // have more than enough to cover the remaining points
-                this.database_transactions[transaction_index].points -= points_remain;
-                this.database_transactions = this.database_transactions.slice(transaction_index);
-                return Array.from(payers_involved, ([payer, points]) => ({payer: payer, points: ((-1) * points)}));
+            // if don't have enough points in this transaction, look for next transaction
+            if (points_remain > transaction_element.points) {
+                points_remain -= transaction_deduct;
+                continue;
             }
-            // don't have enough, look for next transaction
-            points_remain -= transaction_deduct;
+            // transaction have enough to cover the remaining points, compute the results after deducted points
+            this.database_transactions[transaction_index].points -= points_remain;
+            this.database_transactions = this.database_transactions.slice(transaction_index + (points_remain === transaction_element.points ? 1 : 0));
+            // returns the points deducted from each payer
+            return Array.from(payers_involved, ([payer, points]) => ({payer: payer, points: ((-1) * points)}));
         }
         // out of transactions, there's not enough points to spend
         return [];

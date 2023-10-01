@@ -22,10 +22,10 @@ export default class BackendTester {
      * @returns The response of the request sent.
      */
     public async tester_requests(request_path: string, request_type: BackendEndpointType, request_bodies: any[]): Promise<Response[]> {
-        // send a request to test my REST API
         const request_port    = this.server_application.get_port();
         const request_method  = BackendEndpointType[request_type];
         const request_headers = (request_type === BackendEndpointType.POST) ? {"Content-Type": "application/json; charset=utf-8"} : undefined;
+        // send a request to test local REST API
         return Promise.all(request_bodies.map(async (loop_body) => await fetch(`http://localhost:${request_port}${request_path}`, {
             method:  request_method,
             headers: request_headers,

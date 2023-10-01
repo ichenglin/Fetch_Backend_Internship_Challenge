@@ -38,11 +38,13 @@ export class BackendApplication {
      * Load the dynamic server endpoints.
      */
     private server_load_endpoints(): void {
+        // loop through the dynamic server endpoints
         for (const server_endpoint of this.server_endpoints) {
             const endpoint_method   = BackendEndpointType[server_endpoint.get_endpoint_type()];
             const endpoint_path     = server_endpoint.get_endpoint_path();
             const endpoint_callback = server_endpoint.endpoint_callback.bind(server_endpoint);
             const endpoint_registry = (this.server_application as any as {[key: string]: Function}).bind(server_endpoint);
+            // register the dynamic server endpoint
             endpoint_registry[endpoint_method.toLowerCase()](endpoint_path, (request: Request, response: Response) => {
                 SystemLog.log_send(`Endpoint pinged \"${endpoint_method} ${endpoint_path} ${JSON.stringify(request.body)}\"`);
                 endpoint_callback(request, response, this.server_database)
