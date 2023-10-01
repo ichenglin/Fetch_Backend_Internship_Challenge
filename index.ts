@@ -19,5 +19,6 @@ dotenv.config();
     const server_port        = parseInt(process.env.SERVER_PORT as string);
     const server_database    = new BackendDatabase();
     const server_application = new BackendApplication(server_port, server_endpoints, server_database);
-    await server_application.server_connect();
+    const server_status      = await server_application.server_connect();
+    if (!server_status) return;
 })();
