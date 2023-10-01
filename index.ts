@@ -7,13 +7,17 @@ import EndpointBalance from "./endpoints/endpoint_balance";
 
 dotenv.config();
 
-// register endpoints
-const server_endpoints = [
-    new EndpointAdd(),    // POST /add
-    new EndpointSpend(),  // POST /spend
-    new EndpointBalance() // GET  /balance
-];
+(async() => {
+    // register endpoints
+    const server_endpoints = [
+        new EndpointAdd(),    // POST /add
+        new EndpointSpend(),  // POST /spend
+        new EndpointBalance() // GET  /balance
+    ];
 
-const server_port        = parseInt(process.env.SERVER_PORT as string);
-const server_database    = new BackendDatabase();
-const server_application = new BackendApplication(server_port, server_endpoints, server_database);
+    // start REST API
+    const server_port        = parseInt(process.env.SERVER_PORT as string);
+    const server_database    = new BackendDatabase();
+    const server_application = new BackendApplication(server_port, server_endpoints, server_database);
+    await server_application.server_connect();
+})();

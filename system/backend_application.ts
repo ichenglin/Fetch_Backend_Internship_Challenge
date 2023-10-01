@@ -18,7 +18,6 @@ export class BackendApplication {
         this.server_port        = server_port;
         this.server_load_configuration();
         this.server_load_endpoints();
-        this.server_connect();
     }
 
     private server_load_configuration(): void {
@@ -35,16 +34,23 @@ export class BackendApplication {
             const endpoint_callback = server_endpoint.endpoint_callback.bind(server_endpoint);
             const endpoint_registry = (this.server_application as any as {[key: string]: Function}).bind(server_endpoint);
             endpoint_registry[endpoint_method.toLowerCase()](endpoint_path, (request: Request, response: Response) => {
-                SystemLog.log_send(`Endpoint \"${endpoint_method} ${endpoint_path}\" pinged with body ${JSON.stringify(request.body)}`);
+                SystemLog.log_send(`Endpoint pinged \"${endpoint_method} ${endpoint_path} ${JSON.stringify(request.body)}\"`);
                 endpoint_callback(request, response, this.server_database)
             });
             SystemLog.log_send(`Registered endpoint \"${endpoint_method} ${endpoint_path}\"`);
         }
     }
 
-    private server_connect(): void {
+    public async server_connect(): Promise<void> {
         // start the server on specified port
-        this.server_application.listen(this.server_port, () => SystemLog.log_send(`Server is now running on port ${this.server_port}`));
+        return new Promise((resolve, reject) => this.server_application.listen(this.server_port, () => {
+            SystemLog.log_send(`Server is now running on port ${this.server_port}`);
+            resolve();
+        }));
+    }
+
+    public get_port(): number {
+        return this.server_port;
     }
 
 }
