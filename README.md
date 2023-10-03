@@ -53,5 +53,5 @@ in use or you simply want a **custom port** to be used by the program, you can e
 
 ## Additional Resources
 
-- **Challenge Prompt:** [Fetch Backend Internship Challenge.pdf](https://fetch-hiring.s3.us-east-1.amazonaws.com/points-intern.pdf)
+- **Challenge Prompt:** [Fetch Backend Internship Challenge.pdf](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/blob/main/prompt.pdf)
 - **Challenge Part 2:** [summary.txt](https://github.com/ichenglin/Fetch_Backend_Internship_Challenge/blob/main/summary.txt)
